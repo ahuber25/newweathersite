@@ -1,5 +1,5 @@
 const weatherHistory = [];
-const APIRoot = "https://api.openweathermap.org";
+const APIRoot = "api.openweathermap.org";
 const APIKey = "9bde15c33710b2091eebc5fac8761c64";
 
 const searchBar = document.querySelector('#searchbar');
@@ -7,6 +7,8 @@ const searchText = document.querySelector('#searchtext');
 const currentDay = document.querySelector('#today');
 const foreCast = document.querySelector('#forecast');
 const searchHistory = document.querySelector('#history');
+
+
 
 function fetchWeather() {
 
@@ -24,3 +26,30 @@ function fetchWeather() {
         })
 
 }
+
+function fetchLocation(search) {
+    const apiURL = `${APIRoot}/data/2.5/weather?q=${search}&APPID=${APIKey}`
+
+    fetch(apiURL)
+    .then(function (res) {
+        return res.json();
+    })
+    .then(function (data) {
+        if (!data[0]) {
+            alert("Pleae enter valid location.")
+        } else {
+            fetchWeather(data[0]);
+        }
+    })
+    .catch(function (err) {
+        console.error(err)
+    })
+}
+
+function submitHandle(event) {
+    console.log("Submit has been pressed.")
+
+}
+
+
+searchBar.addEventListener('submit', submitHandle);
