@@ -1,18 +1,18 @@
 let weatherHistory = [];
-const APIRoot = "api.openweathermap.org";
-const APIKey = "9bde15c33710b2091eebc5fac8761c64";
+let APIRoot = "https://api.openweathermap.org";
+let APIKey = "9bde15c33710b2091eebc5fac8761c64";
 
-const searchBar = document.querySelector('#searchbar');
-const searchText = document.querySelector('#searchtext');
-const currentDay = document.querySelector('#today');
-const foreCast = document.querySelector('#forecast');
-const searchHistory = document.querySelector('#history');
+let searchBar = document.querySelector('#searchbar');
+let searchText = document.querySelector('#searchtext');
+let currentDay = document.querySelector('#today');
+let foreCast = document.querySelector('#forecast');
+let searchHistory = document.querySelector('#history');
 
 
 
 function fetchWeather(location) {
 
-    const apiURL = `${APIRoot}/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=minutely,hourly&appid=${APIKey}`;
+    let apiURL = `${APIRoot}/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=minutely,hourly&appid=${APIKey}`;
     let { lat } = location;
     let { lon } = location;
     let city = location.name;
@@ -54,7 +54,7 @@ function submitHandle(event) {
     event.preventDefault();
     let search = searchText.value.trim();
     searchText.value = '';
-    fetchLocation()
+    fetchLocation(search);
 
 }
 
