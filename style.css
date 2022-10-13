@@ -1,0 +1,13 @@
+.jumbotron {
+    text-align: center;
+    background-color: navy;
+    color: white;
+}
+
+.searchbar {
+    margin: 12px;
+}
+
+.searchbar h2 {
+    margin-left: 12px;
+}
